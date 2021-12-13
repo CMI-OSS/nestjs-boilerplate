@@ -1,17 +1,17 @@
 version: '3'
 services:
 
-  mongo:
-    container_name: "cmi-mongo"
+  mysql:
+    container_name: "cmi-mysql"
     build:
-      context: ../docker/mysql
+      context: ../../docker/mysql
       dockerfile: Dockerfile
     volumes:
-      - ../data/mysql:/data/db
+      - ../../data/mysql:/data/db
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "${MYSQL_PORT}:${MYSQL_PORT}"

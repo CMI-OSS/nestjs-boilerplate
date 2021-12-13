@@ -4,11 +4,11 @@ services:
   mongo:
     container_name: "cmi-mongo"
     build:
-      context: ../docker/mongodb
+      context: ../../docker/mongodb
       dockerfile: Dockerfile
     volumes:
-      - ../data/mongodb:/data/db
-      - ../docker/mongodb/init/00-initialize.js:/docker-entrypoint-initdb.d/00-initialize.js:ro
+      - ../../data/mongodb:/data/db
+      - ../../docker/mongodb/init/00-initialize.js:/docker-entrypoint-initdb.d/00-initialize.js:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}

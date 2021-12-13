@@ -10,6 +10,9 @@ RUN apk add bash
 COPY package.json ./
 COPY yarn.lock ./
 
+
+COPY . .
+
 # package 설치
 RUN yarn
 

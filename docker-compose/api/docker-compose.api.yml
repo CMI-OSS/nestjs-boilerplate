@@ -5,7 +5,10 @@ services:
     image: cmi/api
     container_name: "cmi-api"
     build:
-      context: ..
+      context: ../../.
+      dockerfile: Dockerfile
+    volumes:
+      - ../../.:/usr/src/app
     environment:
       SERVICE_PORT: ${SERVICE_PORT}
       MONGO_HOST: ${MONGO_HOST}

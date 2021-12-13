@@ -1,8 +1,5 @@
 import { Controller, Get, HttpCode } from '@nestjs/common';
 
-/**
- * 메인 앱 컨트롤러
- */
 @Controller()
 export class AppController {
   @Get('/hello')

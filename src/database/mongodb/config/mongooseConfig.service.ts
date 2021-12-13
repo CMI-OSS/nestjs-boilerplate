@@ -22,7 +22,6 @@ export class MongooseConfigService implements MongooseOptionsFactory {
       'mongodb://' + mongoUsername + ':' + mongoPassword + '@' + mongoHost + ':' + mongoPort + '/' + mongoDatabase;
     return {
       uri: mongooseUrl,
-      useCreateIndex: true,
     };
   }
 }
