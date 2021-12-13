@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  api:
+    image: cmi/api
+    container_name: "cmi-api"
+    build:
+      context: ..
+    environment:
+      SERVICE_PORT: ${SERVICE_PORT}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_USERNAME: ${MONGO_USERNAME}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${SERVICE_PORT}:3000"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

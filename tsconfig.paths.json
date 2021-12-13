@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["./src/*"],
+      "@/common/*": ["./src/common/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/database/*": ["./src/database/*"],
+      "@/roles/*": ["./src/roles/*"]
+    }
+  }
+}

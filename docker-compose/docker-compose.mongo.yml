@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  mongo:
+    container_name: "cmi-mongo"
+    build:
+      context: ../docker/mongodb
+      dockerfile: Dockerfile
+    volumes:
+      - ../data/mongodb:/data/db
+      - ../docker/mongodb/init/00-initialize.js:/docker-entrypoint-initdb.d/00-initialize.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+      MONGO_INITDB_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "docker-healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

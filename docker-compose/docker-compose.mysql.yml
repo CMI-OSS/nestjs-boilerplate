@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  mongo:
+    container_name: "cmi-mongo"
+    build:
+      context: ../docker/mysql
+      dockerfile: Dockerfile
+    volumes:
+      - ../data/mysql:/data/db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:${MYSQL_PORT}"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "docker-healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
