@@ -1,8 +1,9 @@
 
 data/mongodb/*
-data/myssql/*
+data/mysql/*
 data/postgres/*
 *.log
+.env
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode,intellij+all,yarn,node,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,visualstudiocode,intellij+all,yarn,node,react

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongooseConfigService } from '@/database/mongodb/config/mongooseConfig.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TypeormConfigService } from '@/database/postgres/config/typeormConfigService';
+import { TypeormConfigService } from '@/database/mysql/config/typeormConfigService';
 
 /**
  * 데이터베이스 모듈
