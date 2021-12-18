@@ -1,10 +1,9 @@
-db = db.getSiblingDB('cbnu-alrami');
-db.createCollection('test');
-
+db = db.getSiblingDB("cbnu-alrami");
+db.createCollection("test");
 db.createUser({
-  user: 'mongo',
-  pwd: 'mongo',
-  roles: [{ role: 'readWrite', db: 'test' }],
+  user: "mongo",
+  pwd: "mongo",
+  roles: [{ role: "readWrite", db: "cbnu-alrami" }],
 });
 db.test.insertMany([
   {

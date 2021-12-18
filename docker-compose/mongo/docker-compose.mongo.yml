@@ -2,7 +2,7 @@ version: '3'
 services:
 
   mongo:
-    container_name: "cmi-mongo"
+    container_name: "cmiMongo"
     build:
       context: ../../docker/mongodb
       dockerfile: Dockerfile
@@ -30,3 +30,5 @@ services:
       retries: 3
     logging:
       driver: "none"
+    links:
+      - cmi-api

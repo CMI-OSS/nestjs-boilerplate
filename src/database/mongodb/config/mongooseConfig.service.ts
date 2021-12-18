@@ -18,10 +18,11 @@ export class MongooseConfigService implements MongooseOptionsFactory {
     const mongoUsername = this.configService.get<string>('MONGO_USERNAME');
     const mongoPassword = this.configService.get<string>('MONGO_PASSWORD');
 
-    const mongooseUrl: string =
-      'mongodb://' + mongoUsername + ':' + mongoPassword + '@' + mongoHost + ':' + mongoPort + '/' + mongoDatabase;
     return {
-      uri: mongooseUrl,
+      uri: 'mongodb://' + mongoHost + '/' + mongoDatabase,
+      user: mongoUsername,
+      pass: mongoPassword,
+
     };
   }
 }
